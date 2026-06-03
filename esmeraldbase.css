@@ -1,28 +1,8 @@
 /*** FUENTES ***/
-/* realtime */
-@font-face{
-    font-family: 'realtime';
-    src: url('https://dl.dropbox.com/scl/fi/phbclu59c8ah47mw0jwx3/realtimetest-bold.otf?rlkey=4mi92csm1vfo6vr33a3gdz30d&st=13kn61ej&dl=0');
-    font-weight: 700; /*bold*/
-    font-style: normal;
-}
-@font-face{
-    font-family: 'realtime';
-    src: url('https://dl.dropbox.com/scl/fi/vw5okd6lra6wf1012s9nv/realtimetest-black.otf?rlkey=3u9k0dvz48onvmkbpwhyy9y1q&st=s4nhonjv&dl=0');
-    font-weight: 900; /*black*/
-    font-style: normal;
-}
-/* headline */
-@font-face{
-    font-family: '';
-    src: url('');
-    font-weight: 900; /*black*/
-    font-style: normal;
-}
 /* danton */
 @font-face{
     font-family: 'denton';
-    src: url('https://dl.dropbox.com/scl/fi/uho92oku4aolue2kznope/Denton-Test-Black-900.otf?rlkey=26pu23wohru2kdk89yj93hlcm&st=mhoze7cc&dl=0');
+    src: url('https://bettyleg.github.io/EsmeraldCity/Denton-Test-Black-900.otf');
     font-weight: 900; /*black*/
     font-style: normal;
 }
@@ -1300,33 +1280,6 @@ form[action="/search?search_id=watchsearch"] .right-box {
   display: none;
 }
 /*** FUENTES ***/
-/* realtime */
-@font-face{
-    font-family: 'realtime';
-    src: url('https://dl.dropbox.com/scl/fi/phbclu59c8ah47mw0jwx3/realtimetest-bold.otf?rlkey=4mi92csm1vfo6vr33a3gdz30d&st=13kn61ej&dl=0');
-    font-weight: 700; /*bold*/
-    font-style: normal;
-}
-@font-face{
-    font-family: 'realtime';
-    src: url('https://dl.dropbox.com/scl/fi/vw5okd6lra6wf1012s9nv/realtimetest-black.otf?rlkey=3u9k0dvz48onvmkbpwhyy9y1q&st=s4nhonjv&dl=0');
-    font-weight: 900; /*black*/
-    font-style: normal;
-}
-/* headline */
-@font-face{
-    font-family: '';
-    src: url('');
-    font-weight: 900; /*black*/
-    font-style: normal;
-}
-/* danton */
-@font-face{
-    font-family: 'denton';
-    src: url('https://dl.dropbox.com/scl/fi/uho92oku4aolue2kznope/Denton-Test-Black-900.otf?rlkey=26pu23wohru2kdk89yj93hlcm&st=mhoze7cc&dl=0');
-    font-weight: 900; /*black*/
-    font-style: normal;
-}
 /********/
 #cp-main h1.page-title {
   font-size: .9rem;
