@@ -1,0 +1,551 @@
+{CHATBOX_TOP}
+<script>$(function(){
+       var html= document.getElementById('main-content').innerHTML;
+       document.getElementById('main-content').innerHTML = html.replace(/miembros\sconectados.*horas\:/gi, "");
+  });
+  $(function(){
+       var html= document.getElementById('main-content').innerHTML;
+       document.getElementById('main-content').innerHTML = html.replace(/miembro\sregistrados\:/gi, "");
+  });
+</script>
+<style>
+.ec-est{
+  background: var(--background-2);
+  border: var(--border);
+  margin: 50px 0 30px;
+  border-radius: var(--border-radius);
+  overflow:hidden;
+}.ec-est-grupos > div {
+    border: var(--border);
+    flex: 1 1 0;
+    border-radius: var(--border-radius);
+    background: var(--background-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .6rem;
+    width: calc(calc(100% - 20px) / 3);
+    min-width: calc(calc(100% - 20px) / 3);
+    box-sizing: border-box;
+    padding: 5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 100%;
+    text-shadow: var(--text-shadow);
+}
+
+.ec-est-grupos > div .ec-icon-grupo {
+    color: var(--accent);
+    padding-bottom: 10px;
+    font-size: 2rem;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 29px;
+}
+  .ec-est-title {
+    border-bottom: var(--border);
+    background: var(--background-1);
+    padding: 20px 20px;
+    position: relative;
+    z-index: 1;
+}
+.ec-est-title > span {
+    background: var(--accent);
+    font-size: .75rem;
+    color: #fafafa;
+    text-transform: uppercase;
+    padding: 5px 15px;
+    border-radius: var(--border-radius);
+    letter-spacing: 1px;
+    font-family: var(--font-real);
+}
+.ec-est-title:after {
+    content:"";
+    width: 40%;
+    height: 100%;
+    display:block;
+    background:var(--background-2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    clip-path: var(--tr-right);
+}
+.ec-estadisticas {
+  padding: 10px;
+  display: grid;
+  grid-template-areas: "nuevo        links        veinti       grupos      " "nuevo        ahora        veinti       grupos      " "estadisticas estadisticas estadisticas estadisticas";
+  grid-template-columns: 213px 280px 320px auto;
+  gap: 10px;
+  grid-template-rows: 30px auto 40px;
+  height: 380px;
+}
+#ec-est-n-avatar {
+  width: 200px;
+  height: -webkit-fill-available;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  border-radius: var(--border-radius);
+  border: var(--border);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+#ec-est-n-avatar > img {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.ec-est-nuevo {
+  background: var(--background-1);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 5px;
+  grid-area: nuevo;
+}
+.ec-est-n-noti {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+}
+.ec-est-n-noti {
+  display: flex;
+  flex-direction: column;
+  background: var(--background-1);
+  margin: 15px;
+  border-radius: var(--border-radius);
+  border: var(--border);
+  padding: 30px 10px 24px;
+  text-align: center;
+  line-height: 60%;
+  text-transform: uppercase;
+  width: -webkit-fill-available;
+}
+.ec-est-n-noti::before {
+  content: "\e900";
+  font-family: 'emerald-font-icon' !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -17px;
+  border: var(--border);
+  background: var(--background-2);
+  border-radius: 100%;
+  font-size: .9rem;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+}
+.ec-est-n-noti b {
+  font-size: 0;
+}
+.ec-est-n-noti b strong {
+  font-size: .7rem;
+}
+.ec-est-n-noti > span {
+  font-family: var(--font-real);
+}
+.ec-est-links {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  grid-area: links;
+}
+.ec-est-links > a {
+  width: 30px;
+  height: 30px;
+  background: var(--background-1);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-shadow: var(--text-shadow);
+  flex: 1;
+}
+.ec-est-veinti.ec-nombres {
+  grid-area: veinti;
+  border: var(--border);
+  background: var(--background-1);
+  border-radius: var(--border-radius);
+}
+.ec-est-ahora.ec-nombres {
+  grid-area: ahora;
+  background: var(--background-1);
+  border-radius: var(--border-radius);
+  border: var(--border);
+}
+.ec-est-est {
+  grid-area: estadisticas;
+  display: flex;
+  gap: 10px;
+  flex: 1 1 0;
+}
+.ec-est-grupos {
+    grid-area: grupos;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.ec-est-est > *, .ec-est-est > * > * {
+  display: flex;
+  gap: 10px;
+}
+.ec-est-est > div:not(.ec-est-e), .ec-est-est > .ec-est-e > * {
+  min-width: 217px;
+  border: var(--border);
+  background: var(--background-1);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: .75rem;
+  font-weight: 600;
+  text-shadow: var(--text-shadow);
+  color: var(--color-subtitle);
+}
+  
+.ec-est-est > div:not(.ec-est-e) > i, .ec-est-est > .ec-est-e > * > i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: var(--border);
+  background: var(--background-2);
+  width: 40px;
+  font-size: 1rem;
+  color: var(--accent);
+  text-shadow: var(--text-shadow);
+  height: 100%;
+}
+.ec-est-est b {
+  color: var(--accent);
+  font-size: .8rem;
+  font-weight: ;
+}
+.ec-nombres {
+  padding: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: .95rem;
+  text-shadow: var(--text-shadow);
+  text-align:justify;
+  hyphens: auto;
+}
+.ec-nombres br {
+  display: none;
+}
+  .ec-afiliaciones {
+    background: var(--background-2);
+  overflow:hidden;
+}
+
+.ecaf-disenio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: var(--border);
+    background: var(--accent);
+    padding: 8px;
+    position: relative;
+    z-index: 1;
+}
+.ecaf-disenio > * {
+    color: #fafafa;
+    text-transform: uppercase;
+    font-family: var(--font-real);
+    letter-spacing: 1px;
+    background: var(--accent);
+    padding: 0 10px;
+}
+.ecaf-disenio:after {
+    content: "";
+    width: 97%;
+    height: 1px;
+    position: absolute;
+    background: #fafafa;
+    display:block;
+    z-index: -1;
+}
+
+.ecaf-hermana {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(2, 120px);
+    grid-template-rows: repeat(2,120px);
+}
+
+.ecaf-hermana > a {
+    background: var(--background-1);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 10px;
+}
+.ecaf-hermana img {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--border-radius);
+}
+
+.ecaf-content {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.ecaf-elite {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(4, 50px);
+    gap: 5px;
+    padding: 14px;
+    border: var(--border);
+    box-sizing: border-box;
+    border-radius: var(--border-radius);
+    background: var(--background-1);
+}
+
+.ecaf-elite > a {
+    border: var(--border);
+    background: var(--background-2);
+    border-radius: var(--border-radius);
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+.ecaf-elite > a img {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius);
+    background: var(--background-2);
+}
+
+.ecaf-credi {
+    border: var(--border);
+    background: var(--background-1);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    font-size: .82rem;
+    text-align: justify;
+    line-height: 110%;
+    height: 245px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+.ecaf-credi a {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: var(--font-real);
+}
+
+.ecaf-credi b {
+    text-transform: uppercase;
+    font-size: .75rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+body.chatbox {font-family: arial;color: #aaa;}
+div#chatbox_header {
+    width: 96%;
+    font-size: .45rem;
+    border-bottom: 1px solid #fafafa;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+body.chatbox {font-family: arial;color: #aaa;}
+div#chatbox_header {
+    width: 96%;
+    font-size: .45rem;
+    border-bottom: 1px solid #fafafa;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+</style>
+<!-- BEGIN switch_user_logged_out --> 
+<div id="cj-conectarse">
+  <form action="{S_LOGIN_ACTION}" method="post" name="form_login">
+      <label><i class="bi bi-cursor-fill" title="Nombre del personaje"></i><input class="post" type="text" size="10" name="username" /></label>
+      <label><i class="bi bi-incognito" title="Contraseña"></i><input class="post" type="password" size="10" name="password" /></label>
+      <label><input class="radio" type="checkbox" name="autologin" {AUTOLOGIN_CHECKED} /></label>
+      {S_HIDDEN_FIELDS}
+      <input class="mainoption button1" type="submit" name="login" value="{L_LOGIN}" style="height:30px"/>
+  </form>
+</div>
+<!-- END switch_user_logged_out --> 
+
+<div class="cjgrid ec-categorias">
+{BOARD_INDEX}
+</div>
+
+<div class="ec-est">
+  <div class="ec-est-title"><span>estadisticas de nuestro foro</span></div>
+<div class="ec-estadisticas">
+  <div class="ec-est-nuevo">
+    <div id="ec-est-n-avatar">
+      <div class="ec-est-n-noti">
+        <b>{NEWEST_USER}</b>
+        <span>nuevo ingreso</span>
+      </div>
+    </div>
+  </div>
+  <div class="ec-est-links">
+    <a href="{U_OVERALL_POSTERS}" title="Top 20 posteadores"><i class="fi fi-ss-circle-star"></i></a>
+    <a href="/discover" title="Actividad reciente"><i class="fi fi-ss-calendar-clock"></i></a>
+    <a href="{U_TODAY_ACTIVE}" title="Temas activos"><i class="fi fi-ss-box"></i></a>
+    <a href="#" title="Temas nuevos"><i class="fi fi-ss-clip"></i></a>
+    <a href="#" title="twitter"><i class="fi fi-brands-twitter-alt"></i></a>
+    <a href="#" title="Tumblr"><i class="fi fi-brands-tumblr"></i></a>
+  </div>
+  <div class="ec-est-veinti ec-nombres">{L_CONNECTED_MEMBERS}</div>
+  <div class="ec-est-ahora ec-nombres">{LOGGED_IN_USER_LIST}</div>
+  <div class="ec-est-grupos">
+    <div class="spotlight" style="--accent:var(--spotlight)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>spotlight</span></a></div>
+    <div class="corporate-and-business" style="--accent:var(--corporate-and-business)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>corporate & business</span></a></div>
+    <div class="law-and-order" style="--accent:var(--law-and-order)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>law & order</span></a></div>
+    <div class="medical" style="--accent:var(--medical)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>medical</span></a></div>
+      <div class="education" style="--accent:var(--education)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>education</span></a></div>
+      <div class="underworld" style="--accent:var(--underworld)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>underworld</span></a></div>
+      <div class="locals" style="--accent:var(--locals)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>locals</span></a></div>
+      <div class="the-disappeared" style="--accent:var(--the-disappeared)"><a href="#"><div class="ec-icon-grupo"><i></i></div><span>the disappeared</span></a></div>
+  </div>
+  <div class="ec-est-est">
+    <div class="ec-est-e">{TOTAL_USERS_ONLINE}</div>
+    <div><i class="fi fi-ss-user-headset"></i><span><b>{TOTAL_USERS}</b> personajes</span></div>
+    <div><i class="fi fi-ss-book-open-cover"></i><span><b>{TOTAL_POSTS}</b> historias</span></div>
+  </div>
+</div>
+</div>
+<div id="ec-chatbox" style="margin-bottom:10px;"><script>$(document).ready(function(){$('#ec-chatbox').append($('.mini-chatbox.module'))});</script></div>
+<!-- BEGIN switch_user_logged_out --> 
+<div id="cj-conectarse">
+  <form action="{S_LOGIN_ACTION}" method="post" name="form_login">
+      <label><i class="bi bi-cursor-fill" title="Nombre del personaje"></i><input class="post" type="text" size="10" name="username" /></label>
+      <label><i class="bi bi-incognito" title="Contraseña"></i><input class="post" type="password" size="10" name="password" /></label>
+      <label><input class="radio" type="checkbox" name="autologin" {AUTOLOGIN_CHECKED} /></label>
+      {S_HIDDEN_FIELDS}
+      <input class="mainoption button1" type="submit" name="login" value="{L_LOGIN}" style="height:30px"/>
+  </form>
+</div>
+<!-- END switch_user_logged_out --> 
+  <div class="ec-afiliaciones" id="afiliaciones">
+      <div class="ec-est-title"><span>foros afiliados</span></div>
+  <div class="ecaf-content">
+    <div class="ecaf-hermana">
+      <a href="" title="Título"><img src="https://placehold.co/100x100/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/100x100/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/100x100/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/100x100/transparent/8DAA91"/></a>
+    </div>
+    <div class="ecaf-elite">
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>  
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a> 
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+       <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+       <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+      <a href="" title="Título"><img src="https://placehold.co/40x40/transparent/8DAA91"/></a>
+    </div>
+    <div class="ecaf-credi">Agradecemos enormemente a los tutoriales brindados por <a href="https://necromancercoding.tumblr.com/">Necromancer</a>,<a href="https://gitanodoescodes.tumblr.com/">Gitano</a> y <a href="https://flerex.dev/">Flerex</a> que fueron de mucha utilidad para realizar este skin que le pertenece enteramente al staff de <b>Don´t Think Twice</b>. <br/><br/>    
+      También extendemos un agradecimiento especial a <a href="https://www.never-utopia.com/t67294-switcheroo-v1-2-0-gestionnaire-de-multicomptes">Monomer</a> por la astucia de inicio de sesión múltiple.  <br/><br/>
+Las imágenes empleadas a lo largo del foro provienen de <b>Google Imágenes</b> y diversas fuentes externas; todas han sido editadas por el Staff para uso exclusivo dentro de esta comunidad, brindando los créditos correspondientes a sus autores. El contenido restante —incluyendo historias, fichas, tramas y cualquier otro texto— pertenece a cada usuario. <br/><br/>
+Gracias por valorar y respetar el trabajo de todos. ❤
+    </div>
+      </div>
+      <div class="ecaf-disenio"><a href="https://bettyleg.tumblr.com/">Bettyleg</a><span>Skin exclusivo de Don´t Think Twice</span></div>
+      </div>
+
+{CHATBOX_BOTTOM}
+<script>
+  $(function(){
+       var html= document.getElementById('main-content').innerHTML;
+       document.getElementById('main-content').innerHTML = html.replace(/miembros\sconectados.*horas\:/gi, "");
+  });
+  $(function(){
+       var html= document.getElementById('main-content').innerHTML;
+       document.getElementById('main-content').innerHTML = html.replace(/usuarios\sregistrados\:/gi, "");
+  });
+  $(function(){
+       var html= document.getElementById('main-content').innerHTML;
+       document.getElementById('main-content').innerHTML = html.replace(/usuarios\sregistrados\:/gi, "");
+  });
+  $(function() {
+    $("div#main-content .ec-est-est").each(function() {
+        $(this).html($(this).html()           
+         .replace("Nuestros miembros han publicado un total de", "")
+         .replace("Tenemos", "")
+  	 .replace("miembros registrados", "")
+  	  .replace("miembro registrado.", "")
+         .replace("mensajes", "")
+        );
+    });
+});
+</script>
+<script>
+  $(document).ready(function(){
+  $('.ec-est-e').html($('.ec-est-e').html().replace(/En\stotal\shay\s(<strong>)?(\d+)(<\/strong>)?\susuario(s)?\sen\slínea\:\s(\d+)\sRegistrado(s)?,\s(\d)+\sOcultos\sy\s(\d)+\sInvitado(s)?\s+(\:\:\s\d+\smotor\sde\sbúsqueda)?/i, '<div><i class="fi fi-ss-heart"><\/i><span><b>$5<\/b> conectados<\/span><\/div><div><i class="fi fi-ss-incognito"><\/i><span><b>$7<\/b> ocultos<\/span><\/div><div><i class="fi fi-ss-people"><\/i><span><b>$2<\/b> curiosos<\/span><\/div>'));
+  });
+</script>
+    <script>
+    $(document).ready(function(){
+$('#ec-est-n-avatar').each(function () {
+	let url = $(this).parent().find('a').attr('href');
+    console.log(url);
+    let context = $(this);
+    
+	$.get(url, function(cntx) {
+ 		$(context).append($(cntx).find('.ec-pd-avatar > img'));
+  	});
+  });
+  });
+    
+  </script>
+{AUTO_DST}

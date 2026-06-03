@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Calendario</title>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-solid-straight/css/uicons-solid-straight.css'/>
+  <link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-1.8@1.8.3/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script type="text/javascript" src="https://static.tumblr.com/7qjmkr5/IUmmdsy41/jquery.style-my-tooltips.js"></script>
+  <style>
+body {
+    --accent: #566C63;
+    --background-1: #EBEAEA;
+    --background-2: #DFDEDE;
+    --border-color: #fafafa;
+    --color-text: #777;
+    --color-subtitle: #aaa;
+    --text-shadow-color: #fafafa;
+    --color-icons: #bbbbbb;
+}
+body {
+    margin-top: 0 !important;
+    background: url(https://2img.net/i.imgur.com/2jl4IgR.png), hsl(from var(--background-1) h s l / .4);
+    font-size: 12px;
+    color: var(--color-text);
+    font-family: var(--font-text);
+    background-size: cover;
+    background-attachment: fixed;
+}
+body {
+    --arts: #7B4B3A;
+    --spotlight: #557774;
+    --law-and-order: #7B6845;
+    --corporate-and-business: #8F7970;
+    --medical: #9D6F53;
+    --education: #969163;
+    --underworld: #262626;
+    --locals: #74939a;
+    --the-disappeared: #69686a;
+    --el-retorno: #61366f;
+}
+body {
+    --font-title: 'denton';
+    --font-text: 'sofia sans';
+    --font-real: var(--font-text);
+    --border-radius: 5px;
+    --border: 1px solid var(--border-color);
+    --tr-left: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    --tr-right: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+    --img-staff-tablon: url(https://placehold.co/120x120/png);
+    --fnd-busquedas: url(https://2img.net/i.imgur.com/Ux7njxB.png);
+    --gr-brillo: 1;
+    --text-shadow: 1px 1px var(--text-shadow-color), -1px 1px var(--text-shadow-color), 1px -1px var(--text-shadow-color), -1px -1px var(--text-shadow-color);
+}
+    /* danton */
+    #s-m-t-tooltip {
+    max-width: 350px;
+    z-index: 1000000!important;
+    margin: 30px 0 0 0;
+    padding: 8px;
+    background: var(--background-2);
+    font-family: var(--font-text);
+    text-shadow:var(--text-shadow);
+    font-size: .75rem;
+    line-height: 16px;
+    color: var(--accent);
+    border: var(--border);
+    text-transform:uppercase; font-weight:700;
+} 
+    ::-webkit-scrollbar {
+    width: 8px !important;
+    height: 5px !important;
+    background: var(--background-1);
+    border-left: var(--border);
+}
+    ::-webkit-scrollbar-thumb{background:var(--accent)!important}
+
+@font-face{
+    font-family: 'denton';
+    src: url('https://dl.dropbox.com/scl/fi/uho92oku4aolue2kznope/Denton-Test-Black-900.otf?rlkey=26pu23wohru2kdk89yj93hlcm&st=mhoze7cc&dl=0');
+    font-weight: 900; /*black*/
+    font-style: normal;
+}
+    * { box-sizing: border-box; margin:0; padding:0;}
+    
+    .ec-calendario {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    padding: 30px;
+}
+
+.ec-calendario > div:not(.ec-descripcion-dia) {
+    border: var(--border);
+    width: 100%;
+    background: var(--background-2);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: grid;
+    grid-template-areas:
+        "titulo dias"
+        "titulo mes";
+    grid-template-columns: 200px auto;
+    grid-template-rows: 40px auto;
+}
+
+.ec-calendario-titulo {
+    background: url(https://static1.squarespace.com/static/55ee34aae4b0bf70212ada4c/57d9829837c5819632bc630b/5e06e89e74877f00dbb21494/1577545446402/keith-zhu-qaNcz43MeY8-unsplash+%281%29.jpg?format=1500w),var(--background-2);
+    border-right: var(--border);
+    color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: var(--font-title);
+    grid-area: titulo;
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+}
+
+.ec-calendario-dias {
+    border-bottom: var(--border);
+    background: var(--background-1);
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: .7rem;
+    height: 35px;
+    font-weight: 800;
+    text-shadow: var(--text-shadow);
+    color: var(--accent);
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    grid-area: dias;
+}
+
+.ec-calendario-meses {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    grid-auto-rows: 1fr;
+    box-sizing: border-box;
+    grid-area: mes;
+}
+.ec-calendario-meses > dia {
+    border: var(--border);
+    background: var(--background-1);
+    border-radius: var(--border-radius);
+    position: relative;
+    z-index: 1;
+}
+
+.ec-calendario-meses > dia:before {
+    content: attr(id);
+    position: absolute;
+    z-index: -1;
+    left: 6px;
+    top: 6px;
+    font-size: .9rem;
+    font-weight: 900;
+    color: var(--accent);
+    text-shadow: var(--text-shadow);
+}
+    .ec-calendario-titulo > span {
+    transform: rotate(-90deg);
+    font-size: 3rem;
+    position: relative;
+    z-index: 2;
+}
+.ec-calendario-titulo:before {
+    background-color: var(--accent);
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    mix-blend-mode: multiply;
+    backdrop-filter: grayscale(1);
+}
+.ec-calendario-titulo > span:after {
+    content:"";
+    background: var(--accent);
+    width: 50%;
+    height: 7px;
+    display:block;
+    position:absolute;
+    bottom: 0;
+    right:0;
+}
+.ec-descripcion-dia {
+    position: absolute !important;
+    z-index: 2;
+    width: 50vw;
+    background: var(--background-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: 5px 5px var(--accent), 6px 6px var(--background-2), 10px 10px 10px #0002;
+    align-self: center;
+    justify-self: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+div#ec-des-title {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-shadow: var(--text-shadow);
+    padding-left: 20px;
+}
+
+div#ec-des-icon {
+    position: absolute;
+    font-size: 5rem;
+    z-index: -1;
+    margin-top: -10px;
+    margin-left: -10px;
+    color: var(--color-icons);
+    text-shadow: var(--text-shadow);
+    opacity: .4;
+}
+
+div#ec-des-tag {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 5px;
+    text-transform: uppercase;
+}
+
+div#ec-des-tag > * {
+    background: var(--accent);
+    color: #fafafa;
+    padding: 5px 10px;
+    font-size: .6rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+}
+
+div#ec-des-subtitle {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-left: 25px;
+    margin-top: -7px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 25px;
+    text-shadow: var(--text-shadow);
+}
+
+div#ec-des-texto {
+    font-size: .85rem;
+    text-shadow: var(--text-shadow);
+    line-height: 100%;
+    text-align: justify;
+    max-height: 200px;
+    overflow: auto;
+    font-weight: 600;
+}    
+.ec-descripcion-dia.ocultar {
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0;
+}
+.ec-descripcion-dia {
+    transition: .5s ease-in-out;
+    z-index: 2;
+    filter: blur(0px);
+    opacity: 1;
+}
+    .ec-calendario-meses > dia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.ec-calendario-meses > dia > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 0;
+    background: var(--accent);
+    font-size: 1rem;
+    font-weight: 100;
+    color: #fafafa;
+}
+
+div#ec-des-cerrar {
+    background: var(--accent);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 4px;
+    color: #fafafa;
+    text-transform: uppercase;
+    font-size: .6rem;
+    text-align: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-bottom: var(--border);
+}
+
+    @media screen and (max-width: 980px) {
+    .ec-calendario {
+    height: 45vh;
+    padding: 60px;
+}
+    .ec-calendario-titulo{border-bottom: var(--border); border-right:0;}
+    .ec-calendario > div:not(.ec-descripcion-dia){
+    grid-template-areas:
+        "titulo"
+        "dias"
+        "mes";
+    grid-template-columns: auto;
+    grid-template-rows: 200px 40px auto;
+}
+.ec-calendario-titulo> span {
+    transform: rotate(0deg);
+}
+    }
+  </style>
+  </head>
+  <body>
+    <script>
+  (function($){
+    $(document).ready(function(){
+        $("[title]").style_my_tooltips();
+    });
+  })(jQuery);
+</script>
+    <div class="ec-calendario">
+      <div>
+        <div class="ec-calendario-titulo"><span>Junio</span></div>
+        <div class="ec-calendario-dias">
+        <dm>lunes</dm>
+        <dm>martes</dm>
+        <dm>miercoles</dm>
+        <dm>jueves</dm>
+        <dm>viernes</dm>
+        <dm>sabado</dm>
+        <dm>domingo</dm>
+        </div>
+        <div class="ec-calendario-meses">
+        <!-- si hay dias vacios : <vacio></vacio> -->
+          
+        <dia id="1" fecha="01"></dia>
+        <dia id="2" fecha="02"></dia>
+        <dia id="3" fecha="03"></dia>
+        <dia id="4" fecha="04"></dia>
+        <dia id="5" fecha="05"></dia>
+        <dia id="6" fecha="06"></dia>
+        <dia id="7" fecha="07"></dia>
+        <dia id="8" fecha="08"></dia>
+        <dia id="9" fecha="09"></dia>
+        <dia id="10" fecha="10"></dia>
+        <dia id="11" fecha="11"></dia>
+        <dia id="12" fecha="12"></dia>
+        <dia id="13" fecha="13"></dia>
+        <dia id="14" fecha="14"></dia>
+        <dia id="15" fecha="15"></dia>
+        <dia id="16" fecha="16"></dia>
+        <dia id="17" fecha="17"></dia>
+        <dia id="18" fecha="18"></dia>
+        <dia id="19" fecha="19"></dia>
+        <dia id="20" fecha="20"></dia>          
+        <dia id="21" fecha="21"></dia>
+        <dia id="22" fecha="22"></dia>
+        <dia id="23" fecha="23"></dia>          
+        <dia id="24" fecha="24"></dia>
+        <dia id="25" fecha="25"></dia>
+        <dia id="26" fecha="26"></dia>
+        <dia id="27" fecha="27"></dia>
+        <dia id="28" fecha="28"></dia>
+        <dia id="29" fecha="29"></dia>
+        <dia id="30" fecha="30"></dia>
+        </div>
+      </div>
+    <div class="ec-descripcion-dia ocultar" id="cajon"><div>
+      <div id="ec-des-cerrar" onclick="cerrar()">cerrar ventana</div>
+      <div id="ec-des-icon"><i class="fi fi-ss-road-sign-left"></i></div>
+      <div id="ec-des-tag"><tag>Evento usuario</tag></div>
+      <div id="ec-des-title">Tic Tac Toe</div>
+      <div id="ec-des-subtitle">evento organizado por fulanito</div>
+      <div id="ec-des-texto">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.</div>
+      <div id="ec-des-link"></div>
+      </div></div>
+          </div>
+    <script>
+    let cajon = document.getElementById("cajon"); 
+    let titulo = document.getElementById("ec-des-title"); 
+    let subtitulo = document.getElementById("ec-des-subtitle"); 
+    let icon = document.getElementById("ec-des-icon"); 
+    let texto = document.getElementById("ec-des-texto"); 
+    let tags = document.getElementById("ec-des-tag");
+    let dlink = document.getElementById("ec-des-link"); 
+    
+    function ver(indice){
+      cajon.classList.remove("ocultar");
+        $(titulo).html(eventos[indice].titulo);
+        cajon.classList.add(eventos[indice].clase);
+        $(subtitulo).html(eventos[indice].subtitulo);
+        $(texto).html(eventos[indice].texto);
+        $(tags).html(`<tag>${eventos[indice].tag}</tag>`);
+        $(icon).find("i")[0].classList = eventos[indice].icon;
+        if(eventos[indice].link == ''){$(dlink).attr("href", "#");} else {$(dlink).attr("href", eventos[indice].link).attr("target","_blank");}
+    }
+      
+    var eventos = [{
+      titulo: "Titulo",
+      subtitulo: "subtitulo",
+      icon: "fi fi-ss-90s-music-disc",
+      clase: "usuario",
+      tag: "tag",
+      texto: "texto",
+      link: '',
+      dia: 20,
+      onclick: true
+    },{
+      titulo: "Un Titulo",
+      subtitulo: "subtituloooo",
+      icon: "fi fi-ss-party",
+      clase: "usuario",
+      tag: "eventooo",
+      texto: "textooooooo",
+      link: '',
+      dia: 15,
+      onclick: false
+    },{
+      titulo: "Comienza el censo",
+      subtitulo: "¡Alerta alerta alerta!",
+      icon: "fi fi-ss-90s-music-disc",
+      clase: "administrativo",
+      tag: "administrativo",
+      texto: "texto",
+      link: '#',
+      dia: 25,
+      onclick: true
+    },{
+      titulo: "Termina el censo",
+      subtitulo: "¡Alerta alerta alertaaaa!",
+      icon: "fi fi-ss-90s-music-disc",
+      clase: "administrativo",
+      tag: "administrativo",
+      texto: "texto",
+      link: '#',
+      dia: 30,
+      onclick: true
+    }];
+    function cerrar() {
+      cajon.classList= ["ec-descripcion-dia ocultar"];
+    }
+
+    function visualizar(array){
+        eventos.forEach((item, index) => {
+            id_fecha = item.dia;
+            dia = document.getElementById(id_fecha);
+            if(item.onclick){
+               $(dia).append('<button style="cursor:pointer;" class="'+item.clase+'" title="'+item.titulo+'" onclick="ver(\''+index+'\')"><i class="'+ item.icon+'"></i></button>');
+	    } else {
+      		$(dia).append('<button class="'+item.clase+'" title="'+item.titulo+'"><i class="'+ item.icon+'"></i></button>');
+      	    }
+        });
+    }
+    visualizar(eventos);
+    </script>
+  </body>
+</html>

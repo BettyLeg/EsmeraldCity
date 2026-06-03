@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Top Posters</title>
+
+<link href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;700;900&display=swap" rel="stylesheet"/>
+
+<style>
+body {
+    --accent: #566C63;
+    --background-1: #EBEAEA;
+    --background-2: #DFDEDE;
+    --border-color: #fafafa;
+    --color-text: #777;
+    --color-subtitle: #aaa;
+    --text-shadow-color: #fafafa;
+    --color-icons: #bbbbbb;
+}
+body {
+    margin-top: 0 !important;
+    background: url(https://2img.net/i.imgur.com/2jl4IgR.png), hsl(from var(--background-1) h s l / .4);
+    font-size: 12px;
+    color: var(--color-text);
+    font-family: var(--font-text);
+    min-wid th: 1200px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+body {
+    --arts: #7B4B3A;
+    --spotlight: #557774;
+    --law-and-order: #7B6845;
+    --corporate-and-business: #8F7970;
+    --medical: #9D6F53;
+    --education: #969163;
+    --underworld: #262626;
+    --locals: #74939a;
+    --the-disappeared: #69686a;
+    --el-retorno: #61366f;
+}
+body {
+    --font-title: 'denton';
+    --font-text: 'sofia sans';
+    --font-real: var(--font-text);
+    --border-radius: 5px;
+    --border: 1px solid var(--border-color);
+    --tr-left: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    --tr-right: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+    --img-staff-tablon: url(https://placehold.co/120x120/png);
+    --fnd-busquedas: url(https://2img.net/i.imgur.com/Ux7njxB.png);
+    --gr-brillo: 1;
+    --text-shadow: 1px 1px var(--text-shadow-color), -1px 1px var(--text-shadow-color), 1px -1px var(--text-shadow-color), -1px -1px var(--text-shadow-color);
+}
+    /* danton */
+@font-face{
+    font-family: 'denton';
+    src: url('https://dl.dropbox.com/scl/fi/uho92oku4aolue2kznope/Denton-Test-Black-900.otf?rlkey=26pu23wohru2kdk89yj93hlcm&st=mhoze7cc&dl=0');
+    font-weight: 900; /*black*/
+    font-style: normal;
+}
+    * { box-sizing: border-box; margin:0; padding:0;}
+.ec-slide {
+    padding: 0 6vw 3vh;
+    box-sizing: border-box;
+}
+    /* DEFAULT */
+.icon-grupo>i:before {
+    content: "\f9e3";
+    font-family: uicons-solid-straight !important;
+    font-style: normal;
+    font-weight: normal !important;
+}
+.spotlight.icon-grupo > i:before{content:"\fcd6";}
+.arts.icon-grupo > i:before{content:"\f9e3";}
+.law-and-order.icon-grupo > i:before{content:"\f1d9";}
+.corporate-and-business .icon-grupo > i:before{content:"\f2ea";}
+.medical.icon-grupo > i:before{content:"\fce2";}
+.education.icon-grupo > i:before{content:"\f281";}
+.underworld.icon-grupo > i:before{content:"\f827";}
+.locals.icon-grupo > i:before{content:"\f430";}
+.the-disappeared.icon-grupo > i:before{content:"\f6f1";}
+.el-retorno.icon-grupo > i:before{content:"\fab6";}
+.staff.icon-grupo > i:before{content:"\fc87";}
+.ec-personajes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+.ec-personaje {
+    border: var(--border);
+    background: var(--background-2);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ec-pj-avatar {
+    height: 200px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    padding: 10px 0 0;
+    width: 100%;
+}
+.ec-pj-info {
+    margin: 10px;
+    border-radius: var(--border-radius);
+    padding: 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ec-pj-contact {
+    margin: 0 10px 10px;
+    display: flex;
+    gap: 5px;
+    width: 94%;
+}
+.ec-pj-contact > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    flex: 1 1 0;
+    color: #fafafa;
+    padding: 5px;
+    border-radius: var(--border-radius);
+    border: var(--border);
+}
+.ec-pj-avatar > div {
+    width: 150px;
+    height: 150px;
+    background: url(https://placehold.jp/150x150.png);
+    background-size: cover !important;
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: repeat;
+    border-radius: 100%;
+    z-index: 2;
+    border: 5px solid var(--background-1);
+    outline: 4px solid var(--accent);
+}
+
+.ec-pj-info > a {
+    text-decoration: none;
+    font-weight: 900;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 0 30px;
+    text-align: center;
+    line-height: 91%;
+    text-shadow: var(--text-shadow);
+    padding-bottom: 2px;
+}
+
+.ec-pj-info > span {
+    text-transform: uppercase;
+    font-weight: 700;
+    text-shadow: var(--text-shadow);
+    font-size: .7rem;
+}
+.ec-personaje > i {
+    font-size: 5rem;
+    position: absolute;
+    color: #fafafa;
+    opacity: .15;
+    margin-left: -160px;
+    margin-top: 20px;
+}
+.ec-personaje {
+    position: relative;
+}
+.ec-personaje:before {
+    content: attr(ranking);
+    position: absolute;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    border: var(--border);
+    margin-top: 130px;
+    z-index: 3;
+    color: #fff;
+    font-weight: 800;
+    border-width: 3px;
+    margin-right: -130px;
+}
+.ec-pj-contact > a {
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .65rem;
+    letter-spacing: .5px;
+}
+.ec-dear-me-portfolio {
+    height: 145px;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: var(--background-2);
+}
+    .ec-dear-me-marquee {
+    z-index:999;
+    border: var(--border);
+    height: 25px;
+    border-radius: var(--border-radius);
+    background: var(--background-1);
+    margin: 10px 0 0;
+}
+.ec-dear-me-portfolio {
+    align-items: flex-start;
+    justify-content: center;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    line-height: 100%;
+    border-radius: 0;
+    border: 0;
+    border-bottom: var(--border);
+}
+.ec-dear-me-portfolio b {
+    font-family: var(--font-title);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--accent);
+    text-shadow: var(--text-shadow);
+}
+.ec-dear-me-portfolio span {
+    text-transform: uppercase;
+    background: var(--accent);
+    padding: 3px 10px;
+    color: #fafafa;
+    font-weight: 700;
+    font-size: .7rem;
+    letter-spacing: 1px;
+    border: var(--border-color);
+    border-radius: var(--border-radius);
+    margin-top: 9px;
+    min-width: 149px;
+    text-align: center;
+}
+.ec-dear-me-marquee a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 800;
+    font-family: var(--font-text);
+    text-transform: uppercase;
+    text-shadow: var(--text-shadow);
+}
+.ec-dear-me-marquee {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 55px;
+    border: 0;
+    border-bottom: var(--border);
+    position: sticky;
+    top: 0;
+    margin: 0;
+    height: 40px;
+}
+.ec-dear-me-marquee:before, .ec-dear-me-marquee:after {
+    content:"a";
+    width:40px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--accent);
+    font-size:1rem;
+    color: #fafafa;
+    position:absolute;
+    top:0;
+        font-family: uicons-solid-straight !important;
+}
+.ec-dear-me-marquee:before{
+    left:0;
+    content: "\f148";
+    clip-path: var(--tr-right);
+}
+.ec-dear-me-marquee:after {
+    right: 0;
+    clip-path: var(--tr-left);
+    content: "\f149";
+}
+.ec-dear-me-personajes li lord-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+  .ec-pj-dm-top > li lord-icon {
+    width: 16px;
+    height: 16px;
+    top: 3px;
+}
+/* MESES */
+.ec-meses {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-weight: 800;
+    background: var(--background-1);
+    border-bottom: var(--border);
+    align-items: center;
+    text-transform: uppercase;
+    font-size: .8rem;
+    letter-spacing: 1px;
+    color: var(--accent);
+    text-shadow: var(--text-shadow);
+    margin-bottom: 50px;
+}
+.ec-meses button {
+    background: var(--accent);
+    color: #fafafa;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 0;
+}
+      ::selection {
+    background: var(--accent);
+    color: #fafafa;
+    text-shadow: none !important;
+}
+    ::-webkit-scrollbar {
+    width: 8px !important;
+    height: 5px !important;
+    background: var(--background-1);
+    border-left: var(--border);
+}
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent) !important;
+} 
+/* SLIDER */
+.ec-slider { overflow:hidden; transition: height .5s ease}
+.ec-track {
+  display:flex;
+    align-items: flex-start;
+
+  transition: transform .5s ease;
+}
+.ec-slide > div {
+    display: flex;
+    gap: 10px;
+}
+.ec-slide.historico{flex-direction:column;}
+.ec-slide {
+    gap: 10px;
+    display: flex;
+    width: 1200px;
+    min-width: 100%;
+}
+  .ec-pj-mes {
+  width:125px;
+    flex: 1;
+    background: var(--background-2);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 10px solid var(--accent);
+    box-sizing: border-box;
+    padding: 15px;
+}
+  .ec-pj-mes > span {
+    transform: rotate(-90deg);
+    display: block;
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: var(--font-title);
+    font-weight: 300;
+    color: var(--accent);
+    text-shadow: var(--text-shadow);
+    line-height: 100%;
+    white-space: break-spaces;
+}
+button#prevMes {clip-path: var(--tr-right);}
+button#nextMes {clip-path: var(--tr-left);}
+  .oscurecer .ec-personajes .ec-personaje, .oscurecer .ec-pj-mes {
+    filter: grayscale(1) brightness(0.6) contrast(0.7);
+    transition: .3s ease-in;
+}
+.oscurecer .ec-personajes .ec-personaje:hover, .oscurecer:hover .ec-pj-mes {
+    filter: none;
+}
+</style>
+</head>
+
+<body><div class="ec-dear-me-portfolio">
+  <b>TOP POSTER</b>
+  <span>nuestros mejores posteadores</span>
+</div><div class="ec-meses">
+  <button id="prevMes">←</button>
+  <span id="mesActual"></span>
+  <button id="nextMes">→</button>
+</div><div class="ec-slider">
+  <div class="ec-track" id="track"></div>
+</div>
+
+<script>
+  const data = {
+
+  "Primer semestre": {
+
+    "Enero": [
+  { ranking:"01", nombre:"nombre del personaje", posts:120, grupo:"locals", avatar:"https://2img.net/i.imgur.com/T1G5IG3.png", expediente: "#", perfil: "#"},
+    	{ ranking:"02", nombre:"nombre del personaje", posts:110, grupo:"education", avatar:"https://2img.net/i.imgur.com/6xstjnT.png", expediente: "#", perfil: "#" },
+    	{ ranking:"03", nombre:"nombre del personaje", posts:000, grupo:"education", avatar:"https://placehold.jp/150x150.png", expediente: "#", perfil: "#" }
+
+  ],
+    "Febrero": [],
+    "Marzo": [],
+    "Abril": [],
+    "Mayo": [{ ranking:"01", nombre:"nombre del personaje", posts:150, grupo:"medical", avatar:"https://2img.net/i.imgur.com/PMqrrSD.png", expediente: "#", perfil: "#" },
+    	{ ranking:"02", nombre:"nombre del personaje", posts:000, grupo:"education", avatar:"https://placehold.jp/150x150.png", expediente: "#", perfil: "#" },
+    	{ ranking:"03", nombre:"nombre del personaje", posts:000, grupo:"law-and-order", avatar:"https://placehold.jp/150x150.png", expediente: "#", perfil: "#" },
+],
+    "Junio": []
+
+  },
+
+  "Segundo semestre": {
+
+    "Julio": [
+  { ranking:"01", nombre:"nombre del personaje", posts:200, grupo:"spotlight", avatar:"https://2img.net/i.imgur.com/QRqYFjr.png", expediente: "#", perfil: "#"},
+    { ranking:"02", nombre:"nombre del personaje", posts:000, grupo:"education", avatar:"https://placehold.jp/150x150.png", expediente: "#", perfil: "#" },
+    { ranking:"03", nombre:"nombre del personaje", posts:000, grupo:"law-and-order", avatar:"https://placehold.jp/150x150.png", expediente: "#", perfil: "#" }
+
+  ],
+    "Agosto": [],
+    "Septiembre": [],
+    "Octubre": [],
+    "Noviembre": [],
+    "Diciembre": []
+
+  }
+
+};
+const semestres = Object.keys(data);
+const nombresMeses = [
+  "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+];
+
+const mesActual = nombresMeses[new Date().getMonth()];
+
+let index = 0;
+
+// detectar qué semestre contiene el mes actual
+semestres.forEach((semestre, i) => {
+
+  if(data[semestre][mesActual]){
+    index = i;
+  }
+
+});
+const mesTexto = document.getElementById("mesActual");
+const track = document.getElementById("track");
+mesTexto.textContent = semestres[index];
+
+// crear tarjetas
+function crearPersonaje(pj){
+  return `
+  <div class="ec-personaje ${pj.grupo} icon-grupo" ranking="${pj.ranking}" style="--accent:var(--${pj.grupo})">
+    <i></i>
+    <div class="ec-pj-avatar">
+      <div style="background:url(${pj.avatar})"></div>
+    </div>
+    <div class="ec-pj-info">
+      <a>${pj.nombre}</a>
+      <span>${pj.posts} posteos</span>
+    </div>
+    <div class="ec-pj-contact"><a href="${pj.perfil}">perfil</a><a href="{pj.expediente}">expediente</a></div>
+  </div>`;
+}
+
+function crearSlide(nombreSemestre, mesesData){
+
+  return `<div class="ec-slide historico">
+       ${Object.entries(mesesData).filter(([mes, lista]) => lista.length > 0).reverse().map(([mes, lista]) => `
+	<div class="${mes === mesActual ? 'mes-actual' : 'oscurecer'}">
+	<div class="ec-pj-mes">
+        	<span>${mes}</span>
+      	</div>
+          <div class="ec-personajes">
+            ${lista.map(crearPersonaje).join("")}
+          </div>
+
+    </div>`).join("")}
+
+  </div>`;
+}
+
+
+// render inicial
+track.innerHTML = Object.entries(data)
+  .map(([nombreSemestre, mesesData]) =>
+    crearSlide(nombreSemestre, mesesData)
+  )
+  .join("");
+  
+window.addEventListener("load", actualizarAltura);
+window.addEventListener("resize", actualizarAltura);
+  
+// actualizar
+function actualizar(anim = true){
+  track.style.transition = anim ? "transform .5s ease" : "none";
+   track.style.transform = `translateX(-${index * 100}%)`;
+mesTexto.textContent = semestres[index];
+
+  actualizarAltura();
+}
+
+// botones
+prevMes.onclick = () => {
+ index= (index - 1 + semestres.length) % semestres.length
+  actualizar();
+};
+
+nextMes.onclick = () => {
+ index= (index + 1) % semestres.length
+  actualizar();
+};
+
+function actualizarAltura(){
+  const slideActual = document.querySelectorAll(".ec-slide")[index];
+  const altura = slideActual.offsetHeight;
+
+  document.querySelector(".ec-slider").style.height = altura + "px";
+}
+  
+actualizar();
+
+
+// =====================
+// ???? TOUCH / SWIPE
+// =====================
+let startX = 0;
+let currentX = 0;
+let isDragging = false;
+
+track.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+  track.style.transition = "none";
+});
+
+track.addEventListener("touchmove", e => {
+  if(!isDragging) return;
+
+  currentX = e.touches[0].clientX;
+  const diff = currentX - startX;
+
+  track.style.transform = `translateX(calc(-${index * 100}% + ${diff}px))`;
+});
+
+track.addEventListener("touchend", () => {
+  isDragging = false;
+  const diff = currentX - startX;
+
+  // sensibilidad (podés ajustar)
+  const threshold = 80;
+
+  if(diff > threshold){
+index = (index - 1 + semestres.length) % semestres.length
+  } else if(diff < -threshold){
+    index = (index + 1) % semestres.length;
+  }
+
+  actualizar(true);
+});
+</script>
+</body>
+</html>
